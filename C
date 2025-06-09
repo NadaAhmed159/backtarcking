@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+set<ll>s;
+ 
+ll backtracking(int n,int m,int move){
+ move++;
+   if(n>m)return 0;
+   if(n==m)return move;
+   ll x2=backtracking( n*2, m, move);
+   ll x3=backtracking( n*3, m,move);
+   if(!x2||!x3||x2==0&&x3==0)
+  return x2+x3;
+  else return min(x2,x3);
+ }
+int main() {
+ int n,m;
+ cin>>n>>m;
+ int z=backtracking( n, m, -1);
+if(n==m)cout<<0;
+else if(!z)cout<<-1;
+else
+ cout<<z;
+
+    
+    return 0;
+    
+    }
